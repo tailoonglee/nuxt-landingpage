@@ -1,6 +1,6 @@
 <template>
   <div class="bg-green">
-    <div class="flex justify-between items-center xl:container h-u64 md:h-u138 mx-auto px-6 xl:px-8 2xl:px-0">
+    <div class="flex justify-between items-center 2xl:container h-u64 md:h-u138 mx-auto px-6 xl:px-8 2xl:px-0">
       <div class="flex items-center">
         <button
           aria-label="Open Navigation Panel"
@@ -48,14 +48,14 @@
         </div>
       </div>
 
-      <div class="flex items-center md:mt-8">
+      <div class="flex items-center md:mt-8 relative">
         <div
-          class="w-u278 h-u36 hidden"
+          class="w-u278 h-u36 hidden absolute search-wrapper"
           role="search"
           v-if="visibleSearch"
           v-click-outside="hideSearch"
           :class="{
-            'lg:flex': visibleSearch
+            'xl:flex': visibleSearch
           }"
         >
           <input type="text" class="flex-grow border border-black focus:outline-none px-u10" placeholder="What are you searching for?" />
@@ -65,14 +65,14 @@
         <div
           v-for="link in leftLinks"
           :key="link.icon"
-          class="mr-u20 xl:mr-u30 last:mr-0 flex items-center"
+          class="mr-u20 xl:mr-u30 last:mr-0 flex items-center pb-u7"
         >
           <button
             v-if="link.icon === 'search'"
             @click.prevent="openSearch"
             class="focus:outline-none"
             :class="{
-              'lg:hidden': visibleSearch
+              'xl:invisible': visibleSearch
             }"
           >
             <Icon :icon="link.icon" />
@@ -89,7 +89,7 @@
     </div>
 
     <div
-      class="fixed bg-white left-2/4 transform -translate-x-1/2 w-u335 h-u47 flex z-20 p-u5 lg:hidden"
+      class="fixed bg-white left-2/4 transform -translate-x-1/2 w-u335 h-u47 flex z-20 p-u5 xl:hidden"
       role="search"
       v-if="visibleSearch"
       v-click-outside="hideSearch"
@@ -270,3 +270,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  * >>> .search-wrapper {
+    right: calc(100% - 30px);
+    top: -7px;
+  }
+</style>

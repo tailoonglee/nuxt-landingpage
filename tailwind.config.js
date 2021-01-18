@@ -180,6 +180,7 @@ module.exports = {
       maxWidth: {
         '1/2': '50%',
         'u140': '140px',
+        'u200': '200px',
         'u972': '972px',
       },
       minHeight: {
